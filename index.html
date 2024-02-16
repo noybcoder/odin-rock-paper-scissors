@@ -14,28 +14,31 @@
 <body>
     <header>
         <h1>Rock, Paper, Scissors</h1>
+        <h3>First to score 5 wins</h2>
     </header>
     <main>
-        <div class="player">
-            <div>You</div>
-            <div>0</div>
-            <div>?</div>
+        
+        <div class="container">
+            <div class="player">
+                <div class="score">You: 0</div>
+                <div class="choice">✂️</div>
+
+            </div>
+            <div class="computer">
+                <div class="score">CPU: 0</div>
+                <div class="choice">📄</div>
+            </div>
         </div>
-        <div class="computer">
-            <div>CPU</div>
-            <div>0</div>
-            <div>?</div>
-        </div>
-    </main>
-    <section>
         <div class="hidden result">
             <p>You win!</p>
             <p>Scissors beat paper</p>
         </div>
+    </main>
+    <section>
         <div class="options">
-            <div>⛰️</div>
-            <div>📄</div>
-            <div>✂️</div>
+            <div id="rock">⛰️</div>
+            <div id="paper">📄</div>
+            <div id="scissors">✂️</div>
         </div>
         <table id="statistics">
             <tr>

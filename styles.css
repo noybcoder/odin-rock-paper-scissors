@@ -1,10 +1,10 @@
-body {
+html {
     font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
     padding: 0;
     margin: 0;
     text-align: center;
     color: rgb(211, 211, 211);
-    background-color: rgb(0, 0, 0);
+    background-color: #0C1121;
 }
 
 header {
@@ -15,15 +15,42 @@ header {
 
 main {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     gap: 50px;
     font-size: 30px;
 }
 
+.result {
+    font-size: 28px;
+    margin-top: -30px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 75px;
+    margin-top: 30px;
+}
+
+.choice {
+    font-size: 75px;
+    margin-top: 30px;
+}
+
 .options {
     display: flex;
     justify-content: center;
+    gap: 40px;
     font-size: 60px;
+}
+
+#rock, #paper, #scissors {
+    /* border: 5px solid white; */
+    border-radius: 10%;
+    padding: 20px;
+    font-size: 75px;
+    background-color: rgb(211, 211, 211);
 }
 
 #statistics {
@@ -37,6 +64,6 @@ table, th, td {
 }
 
 th, td {
-    /* border: 1px ridge rgb(255, 255,  255); */
     padding: 10px;
+    font-size: 20px;
 }
