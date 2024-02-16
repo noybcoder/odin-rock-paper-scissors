@@ -27,11 +27,16 @@ main {
 }
 
 #statistics {
-    margin-top: 30px;
     display: flex;
     justify-content: center;
+    margin-top: 30px;
+}
+
+table, th, td {
+    border-collapse: collapse;
 }
 
 th, td {
-    border: 1px solid white;
+    /* border: 1px ridge rgb(255, 255,  255); */
+    padding: 10px;
 }
