@@ -14,19 +14,18 @@
 <body>
     <header>
         <h1>Rock, Paper, Scissors</h1>
-        <h3>First to score 5 wins</h2>
+        <h4>First to score 5 wins</h4>
     </header>
     <main>
-        
         <div class="container">
             <div class="player">
-                <div class="score">You: 0</div>
-                <div class="choice">✂️</div>
+                <p class="score">You: 0</p>
+                <p class="choice">?</p>
 
             </div>
             <div class="computer">
-                <div class="score">CPU: 0</div>
-                <div class="choice">📄</div>
+                <p class="score">CPU: 0</p>
+                <p class="choice">?</p>
             </div>
         </div>
         <div class="hidden result">
@@ -35,35 +34,20 @@
         </div>
     </main>
     <section>
-        <div class="options">
-            <div id="rock">⛰️</div>
-            <div id="paper">📄</div>
-            <div id="scissors">✂️</div>
+        <div id="options">
+            <button type="button" id="rock">⛰️</button>
+            <button type="button" id="paper">📄</button>
+            <button type="button" id="scissors">✂️</button>
         </div>
-        <table id="statistics">
+        <table class="hidden statistics">
             <tr>
                 <th>Round</th>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-                <td>4</td>
-                <td>5</td>
             </tr>
             <tr>
                 <th>You</th>
-                <td>✂️</td>
-                <td>⛰️</td>
-                <td>📄</td>
-                <td>📄</td>
-                <td>⛰️</td>
             </tr>
             <tr>
                 <td>CPU</td>
-                <td>✂️</td>
-                <td>✂️</td>
-                <td>⛰️</td>
-                <td>📄</td>
-                <td>⛰️</td>
             </tr>
         </table>
     </section>
