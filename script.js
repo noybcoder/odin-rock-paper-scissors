@@ -1,12 +1,13 @@
 const playerChoice = document.getElementById('options');
 const result = document.querySelector('.result');
-const stats = document.querySelector('.statistics');
+const summary = document.getElementsByTagName('tr');
 const playerOption = document.querySelector('.player > .choice');
 const computerOption = document.querySelector('.computer > .choice');
 const playerScore = document.querySelector('.player .score');
 const computerScore = document.querySelector('.computer .score');
 
-let round = 0;
+
+let counter = 0;
 
 
 function getComputerChoice() {
@@ -34,6 +35,25 @@ function playRound() {
     }    
 }
 
+function getSummary() {
+    const round = document.createElement('td');
+    const player = document.createElement('td');
+    const computer = document.createElement('td');
+
+    const roundStat = document.createTextNode(++counter);
+    round.appendChild(roundStat);
+    summary[0].appendChild(round);
+
+    const playerStat = document.createTextNode(playerOption.innerText);
+    player.appendChild(playerStat);
+    summary[1].appendChild(player);
+
+    const computerStat = document.createTextNode(computerOption.innerText);
+    computer.appendChild(computerStat);
+    summary[2].appendChild(computer);
+
+}
+
 playerChoice.addEventListener('click', event => {
     if (parseInt(playerScore.textContent) < 5 && parseInt(computerScore.textContent) < 5) {
         if (event.target !== event.currentTarget) {playerOption.innerText = event.target.innerText;}
@@ -42,11 +62,10 @@ playerChoice.addEventListener('click', event => {
         result.classList.remove('hidden');
     
         playRound();
-        stats.classList.remove('hidden');
+        summary[0].parentElement.parentElement.classList.remove('hidden');
+        getSummary();
     
     } else {
         alert('game over');
     }
-
-   
-})
+});
