@@ -65,6 +65,9 @@ playerChoice.addEventListener('click', event => {
         getSummary();
     
     } else {
-        alert('game over');
+        document.querySelector('.modal').classList.remove('hidden');
+        document.querySelector('.overlay').classList.remove('hidden');
+        document.getElementById('retry').addEventListener('click', () => location.reload());
     }
 });
+
