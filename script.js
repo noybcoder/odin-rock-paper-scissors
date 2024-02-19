@@ -51,7 +51,6 @@ function getSummary() {
     const computerStat = document.createTextNode(computerOption.innerText);
     computer.appendChild(computerStat);
     summary[2].appendChild(computer);
-
 }
 
 playerChoice.addEventListener('click', event => {
