@@ -6,9 +6,11 @@ const computerOption = document.querySelector('.computer > .choice');
 const playerScore = document.querySelector('.player .score');
 const computerScore = document.querySelector('.computer .score');
 
+const modal = document.querySelector('.modal p');
+const retry = document.getElementById('retry');
+const overlay = document.querySelector('.overlay');
 
 let counter = 0;
-
 
 function getComputerChoice() {
     const CHOICES = ['⛰️', '📄', '✂️'];
@@ -59,15 +61,17 @@ playerChoice.addEventListener('click', event => {
         computerOption.innerText = getComputerChoice();
     
         result.classList.remove('hidden');
-    
         playRound();
         summary[0].parentElement.parentElement.classList.remove('hidden');
         getSummary();
-    
     } else {
-        document.querySelector('.modal').classList.remove('hidden');
-        document.querySelector('.overlay').classList.remove('hidden');
-        document.getElementById('retry').addEventListener('click', () => location.reload());
+        if (parseInt(playerScore.innerText) > parseInt(computerScore.innerText)) {
+            modal.textContent = 'Congratulations! You beat the CPU!';
+        } else {
+            modal.textContent = 'Sorry! CPU wins this time...';
+        }
+        modal.parentElement.parentElement.classList.remove('hidden');
+        overlay.classList.remove('hidden');
+        retry.addEventListener('click', () => location.reload());
     }
 });
-
