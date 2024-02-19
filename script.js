@@ -1,49 +1,73 @@
+const playerChoice = document.getElementById('options');
+const result = document.querySelector('.result');
+const summary = document.getElementsByTagName('tr');
+const playerOption = document.querySelector('.player > .choice');
+const computerOption = document.querySelector('.computer > .choice');
+const playerScore = document.querySelector('.player .score');
+const computerScore = document.querySelector('.computer .score');
+
+
+let counter = 0;
+
+
 function getComputerChoice() {
-    const CHOICES = ['Rock', 'Paper', 'Scissors'];
-    let randIndex = Math.floor(Math.random() * CHOICES.length);
-    return CHOICES[randIndex];
+    const CHOICES = ['⛰️', '📄', '✂️'];
+    let random = Math.floor(Math.random() * CHOICES.length);
+    return CHOICES[random];
 }
 
-function getPlayerChoice() {
-    let choice = prompt('Please choose from \"Rock\", \"Paper\", or \"Scissors\":');
-    rePattern = new RegExp('rock|paper|scissors', 'i');
-    choice.match(rePattern) ??
-        alert(`You have entered an invalid choice: ${choice}. Please try again.`);
-    choice = choice.charAt(0).toUpperCase() + choice.slice(1).toLowerCase();
-    return choice;
-}
-
-function playRound(playerChoice, computerChoice, playerScore=0, computerScore=0) {
-    alert(`You choice: ${playerChoice}\n Computer's choice: ${computerChoice}`);
-
-    if (playerChoice === computerChoice) {
-        alert('It\'s a tie.');
-    } else if(
-        (playerChoice === 'Rock' && computerChoice === 'Scissors') ||
-        (playerChoice === 'Paper' && computerChoice === 'Rock') ||
-        (playerChoice === 'Scissors' && computerChoice === 'Paper'))
+function playRound() {
+    if (playerOption.innerText === computerOption.innerText) {
+        result.firstElementChild.textContent = 'It\'s a tie!';
+        result.lastElementChild.textContent = `Both you and CPU chose ${playerOption.innerText}`;
+    } else if (
+        (playerOption.innerText === '⛰️' && computerOption.innerText === '✂️') ||
+        (playerOption.innerText === '📄' && computerOption.innerText === '⛰️') ||
+        (playerOption.innerText === '✂️' && computerOption.innerText === '📄')) 
     {
-        ++playerScore;
-        alert(`You Win! ${playerChoice} beats ${computerChoice}.`);
+        playerScore.textContent = parseInt(playerScore.textContent) + 1;
+        result.firstElementChild.textContent = 'You win!';
+        result.lastElementChild.textContent = `${playerOption.innerText} beats ${computerOption.innerText}.`;
     } else {
-        ++computerScore;
-        alert(`You Lose! ${computerChoice} beats ${playerChoice}.`);
-    }
-
-    return [playerScore, computerScore];
+        computerScore.textContent = parseInt(computerScore.textContent) + 1;
+        result.firstElementChild.textContent = 'You lose...';
+        result.lastElementChild.textContent = `${computerOption.innerText} beats ${playerOption.innerText}.`;
+    }    
 }
 
-function game() {
-    let rounds = 5;
-    let playerScore = 0, computerScore = 0;
+function getSummary() {
+    const round = document.createElement('td');
+    const player = document.createElement('td');
+    const computer = document.createElement('td');
 
-    while (rounds > 0) {
-        [playerScore, computerScore] =
-            playRound(
-                getPlayerChoice(), getComputerChoice(), playerScore, computerScore
-            );
-        --rounds;
-    }
-    alert(`Your score: ${playerScore}\n Computer's score: ${computerScore}.`);
-    (playerScore > computerScore)? alert('You are the winner!'): alert('You are the loser!');
+    const roundStat = document.createTextNode(++counter);
+    round.appendChild(roundStat);
+    summary[0].appendChild(round);
+
+    const playerStat = document.createTextNode(playerOption.innerText);
+    player.appendChild(playerStat);
+    summary[1].appendChild(player);
+
+    const computerStat = document.createTextNode(computerOption.innerText);
+    computer.appendChild(computerStat);
+    summary[2].appendChild(computer);
 }
+
+playerChoice.addEventListener('click', event => {
+    if (parseInt(playerScore.textContent) < 5 && parseInt(computerScore.textContent) < 5) {
+        if (event.target !== event.currentTarget) {playerOption.innerText = event.target.innerText;}
+        computerOption.innerText = getComputerChoice();
+    
+        result.classList.remove('hidden');
+    
+        playRound();
+        summary[0].parentElement.parentElement.classList.remove('hidden');
+        getSummary();
+    
+    } else {
+        document.querySelector('.modal').classList.remove('hidden');
+        document.querySelector('.overlay').classList.remove('hidden');
+        document.getElementById('retry').addEventListener('click', () => location.reload());
+    }
+});
+

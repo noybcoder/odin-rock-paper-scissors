@@ -3,10 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Paper Scissors</title>
+    <title>Rock Paper Scissors Game</title>
+    <link href="styles.css" rel="stylesheet"></link>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/games" rel="stylesheet">
     <script defer src="script.js"></script>
 </head>
 <body>
-    
+    <header>
+        <h1>Rock, Paper, Scissors</h1>
+        <h4>First to score 5 wins</h4>
+    </header>
+    <main>
+        <div class="container">
+            <div class="player">
+                <p>You: <span class="score">0</span></p>
+                <p class="choice">?</p>
+
+            </div>
+            <div class="computer">
+                <p>CPU: <span class="score">0</span></p>
+                <p class="choice">?</p>
+            </div>
+        </div>
+        <div class="result hidden">
+            <p></p>
+            <p></p>
+        </div>
+    </main>
+    <section>
+        <div id="options">
+            <button type="button" id="rock">⛰️</button>
+            <button type="button" id="paper">📄</button>
+            <button type="button" id="scissors">✂️</button>
+        </div>
+        <table class="summary hidden">
+            <tr>
+                <th>Round</th>
+            </tr>
+            <tr>
+                <th>You</th>
+            </tr>
+            <tr>
+                <th>CPU</th>
+            </tr>
+        </table>
+    </section>
+    <section class="modal hidden">
+        <div>
+            <p>Congratulations! You beat the computer.</p>
+            <button type="button" id="retry">New Game</button>
+        </div>
+    </section>
+    <section class="overlay hidden"></section>
+
 </body>
 </html>
