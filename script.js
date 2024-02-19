@@ -54,6 +54,17 @@ function getSummary() {
     summary[2].appendChild(computer);
 }
 
+function restartGame() {
+    if (playerScore.innerText > computerScore.innerText) {
+        modal.textContent = 'Congratulations! You beat the CPU!';
+    } else {
+        modal.textContent = 'Sorry! The CPU wins this time...';
+    }
+    modal.parentElement.parentElement.classList.remove('hidden');
+    overlay.classList.remove('hidden');
+    retry.addEventListener('click', () => location.reload());
+}
+
 playerChoice.addEventListener('click', event => {
     if (parseInt(playerScore.textContent) < 5 && parseInt(computerScore.textContent) < 5) {
         if (event.target !== event.currentTarget) {playerOption.innerText = event.target.innerText;}
@@ -63,15 +74,7 @@ playerChoice.addEventListener('click', event => {
         playRound();
         summary[0].parentElement.parentElement.classList.remove('hidden');
         getSummary();
-    
     } else {
-        if (playerScore.innerText > computerScore.innerText) {
-            modal.textContent = 'Congratulations! You beat the CPU!';
-        } else {
-            modal.textContent = 'Sorry! The CPU wins this time...';
-        }
-        modal.parentElement.parentElement.classList.remove('hidden');
-        overlay.classList.remove('hidden');
-        retry.addEventListener('click', () => location.reload());
+        restartGame();
     }
 });
