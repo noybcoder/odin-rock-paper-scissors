@@ -8,8 +8,7 @@ const computerScore = document.querySelector('.computer .score');
 
 const modal = document.querySelector('.modal p');
 const retry = document.getElementById('retry');
-const overlay = document.querySelector('.overlay');
-
+const overlay = document.querySelector('.overlay')
 let counter = 0;
 
 function getComputerChoice() {
@@ -64,11 +63,12 @@ playerChoice.addEventListener('click', event => {
         playRound();
         summary[0].parentElement.parentElement.classList.remove('hidden');
         getSummary();
+    
     } else {
-        if (parseInt(playerScore.innerText) > parseInt(computerScore.innerText)) {
+        if (playerScore.innerText > computerScore.innerText) {
             modal.textContent = 'Congratulations! You beat the CPU!';
         } else {
-            modal.textContent = 'Sorry! CPU wins this time...';
+            modal.textContent = 'Sorry! The CPU wins this time...';
         }
         modal.parentElement.parentElement.classList.remove('hidden');
         overlay.classList.remove('hidden');
